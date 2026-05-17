@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扫雷合集</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: Arial, sans-serif;
+            background: #1a1a2e;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            text-align: center;
+            padding: 40px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 8px;
+            color: #ffd200;
+        }
+        .subtitle {
+            font-size: 1rem;
+            color: #888;
+            margin-bottom: 40px;
+        }
+        .game-list {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .game-card {
+            background: #16213e;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 30px 24px;
+            width: 240px;
+            text-decoration: none;
+            color: #fff;
+            display: block;
+        }
+        .game-card:hover {
+            background: #1a2744;
+            border-color: #555;
+        }
+        .game-icon {
+            font-size: 3rem;
+            margin-bottom: 16px;
+        }
+        .game-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .game-desc {
+            font-size: 0.85rem;
+            color: #888;
+            line-height: 1.5;
+        }
+        .tag {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            margin-top: 10px;
+        }
+        .tag-native { background: #e67e22; color: #fff; }
+        .tag-vue { background: #27ae60; color: #fff; }
+        .tag-uniapp { background: #2980b9; color: #fff; }
+        footer {
+            margin-top: 40px;
+            font-size: 0.8rem;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>扫雷合集</h1>
+        <p class="subtitle">三种技术实现</p>
+        <div class="game-list">
+            <a href="./native/" class="game-card">
+                <div class="game-icon">🎯</div>
+                <div class="game-name">原生 JS 扫雷</div>
+                <div class="game-desc">纯 JavaScript 实现</div>
+                <span class="tag tag-native">原生 JS</span>
+            </a>
+            <a href="./vue/" class="game-card">
+                <div class="game-icon">⚡</div>
+                <div class="game-name">Vue 3 扫雷</div>
+                <div class="game-desc">Vue 3 + Vite 构建</div>
+                <span class="tag tag-vue">Vue 3</span>
+            </a>
+            <a href="./my-h5/" class="game-card">
+                <div class="game-icon">📱</div>
+                <div class="game-name">UniApp 扫雷</div>
+                <div class="game-desc">UniApp 跨平台开发</div>
+                <span class="tag tag-uniapp">UniApp</span>
+            </a>
+        </div>
+        <footer>GitHub Pages 部署</footer>
+    </div>
+</body>
+</html>

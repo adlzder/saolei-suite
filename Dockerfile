@@ -4,7 +4,7 @@ FROM nginx:alpine
 WORKDIR /usr/share/nginx/html
 
 # 把三套静态项目复制到 Nginx 网站根目录
-COPY ./html .
+COPY ./docs .
 
 # 使用自定义 Nginx 配置
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf
