@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN"> <!--语言中文 -->
+<head>
+  <meta charset="UTF-8" /><!--编码为中文 -->
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /><!-- 适配移动端页面宽度等于设备的，初始的缩放是1 -->
+<title>扫雷</title> 
+ <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app"><!--外层控制宽度居中-->
+    
+    <header class="header">
+      <h1>扫雷</h1>
+    </header>
+
+    <!-- section表示功能块 -->
+    <section class="panel">
+      <!-- 状态、剩雷、计时-->
+      <div class="info-box">  <!-- 创个盒子，赫盒子的名=。。。，这个东西可以在css里面设置样式控制布局-->
+        <div class="stat"><!-- 含俩装太，雷和计时-->
+          <span class="label">剩余雷数</span><!-- span是小范围的div是大范围的-->
+          <span id="mineCount" class="value">0</span><!-- 剩余雷数初值0-->
+        </div>
+        <div class="stat">
+          <span class="label">计时</span>
+          <span id="timer" class="value">0</span><!-- 计时初值0-->
+        </div>
+      </div>
+
+      <!-- 控制项：难度、自定义行列雷数、重新开始按钮 -->
+      <div class="controls">
+        <div class="control-group"> <!-- 控制组 -->
+          <label for="difficulty">难度</label>
+          <select id="difficulty"><!-- 下拉的选项框选 -->
+            <option value="beginner">初级 9×9 / 10雷</option>
+            <option value="intermediate">中级 16×16 / 40雷</option>
+            <option value="advanced">高级 16×30 / 99雷</option>
+            <option value="custom">自定义</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <label for="rows">行</label>
+          <input id="rows" type="number" min="5" max="30" value="9" /><!-- 输入行 type="number"只能输入数字 -->
+        </div>
+
+        <div class="control-group">
+          <label for="cols">列</label>
+          <input id="cols" type="number" min="5" max="40" value="9" /><!-- 输入列 默value="9"认-->
+        </div>
+
+        <div class="control-group">
+          <label for="mines">雷数</label>
+          <input id="mines" type="number" min="1" value="10" />
+        </div>
+
+        <button id="restartBtn" class="btn primary">重新开始</button><!-- 按钮名restartBtn js可以找到 btn primary btn 代表是个按钮  primary 代表主按钮-->
+      </div>
+    </section>
+
+    <!-- 棋盘容器 -->
+    <main class="game-wrap"><!-- 主要内容-->
+      <div id="board" class="board" ></div><!-- js可以通board找到棋盘-->
+    </main>
+  </div>
+
+  <!-- 游戏结束弹窗 -->
+  <div id="modal" class="modal hidden"><!-- 两个类modal表是个弹窗hidden 表示隐藏状态-->
+    <div class="modal-content">
+      <h2 id="modalTitle">提示</h2>
+      <p id="modalMessage">游戏结束</p>
+      <button id="modalBtn" class="btn primary">再来一局</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

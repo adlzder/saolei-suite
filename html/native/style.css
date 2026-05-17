@@ -1,0 +1,370 @@
+/* CSS变量：方便统一管理颜色 */
+:root {
+  --primary-dark: #1f4e79; /* 一级标题主色 */
+  --primary: #2e75b6;      /* 强调色 */
+  --bg: #f4f8fc;           /* 背景色 */
+  --panel: #ffffff;        /* 面板背景 */
+  --grid-border: #aab7c4;  /* 盘边框色 */
+  --closed: #c0c0c0;       /* 未翻开格子颜色 */
+  --open: #ffffff;         /* 已翻开格子颜色 */
+  --text: #1f2937;         /* 默认文字 */
+  --success: #2e7d32;      /* 成功色 */
+  --danger: #c62828;       /* 失败色 */
+  --shadow: 0 10px 30px rgba(31, 78, 121, 0.12);
+}
+
+/* 所有元素使用 border-box，布局更容易控制 */
+* {
+  box-sizing: border-box;
+}
+
+/* 页面基础样式雅黑字体 纯色背景background */
+body {
+  margin: 0; /* 去浏览器默认外距 */
+  font-family:"Microsoft YaHei", sans-serif;
+  background: #ffffff;
+  color: var(--text);/* 默认字体色 */
+}
+
+/* 整体容器 */
+.app {
+  max-width: 1200px;/* 限最大宽 */
+  margin: 0 auto;/* 居中显示 */
+  padding: 18px;/* 两边留白 */
+}
+
+/* 标题区 */
+.header {
+  text-align: center;/* 我的标题得居中 */
+  margin-bottom: 18px;/*这个标题和下面的内容要留有距离 */
+}
+
+.header h1 {
+  margin: 0;
+  color: var(--primary-dark);
+  font-size: 32px;
+  letter-spacing: 1px;/* 设置字de间距 */
+}
+
+
+/* 控制面板 */
+.panel {
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  padding: 16px;
+  margin-bottom: 18px;
+}
+
+/* 统计信息盒子 */
+.info-box {
+  display: flex;
+  gap: 16px;/* 每个子项间间距 */
+  margin-bottom: 14px;
+}
+
+/* 单个统计项 */
+.stat {
+  flex: 1 1 150px;
+  background: #f7fbff;
+  border: 1px solid #d7e3ef;
+  border-radius: 12px;
+  padding: 12px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stat .label {
+  color: var(--primary-dark);
+  font-weight: 700;
+}
+
+.stat .value {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+
+.controls {
+  display: flex;
+  gap: 12px;
+  align-items: end; /* 底部对齐，让控件看起来整齐 */
+}
+
+/* 每个输入组 */
+.control-group {
+  display: flex;
+  flex-direction: column; /* label 在上，输入框在下 */
+  gap: 6px;
+}
+
+/* 输入组的 label */
+.control-group label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--primary-dark);
+}
+
+/* 输入框和下拉框基础样式 */
+select,
+input {
+  height: 38px;
+  min-width: 120px;
+  padding: 0 10px;
+  border: 1px solid #c7d6e5;
+  border-radius: 10px;
+  outline: none; /* 去掉默认蓝色边框 */
+  background: #fff;
+  font-size: 14px;
+}
+
+
+select:focus,
+input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(46, 117, 182, 0.12);
+}
+
+/* 按钮基础样 */
+.btn {
+  height: 38px;
+  padding: 0 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+/* 主按钮 */
+.btn.primary {
+  background: var(--primary);
+  color: #fff;
+}
+
+.btn.primary:hover {
+  background: var(--primary-dark);
+}
+.game-wrap {
+  display: flex;
+  justify-content: center;
+  overflow-x: auto; /* 可以横向滚动 */
+  padding-bottom: 10px;
+}
+
+/* 棋盘整体 */
+.board {
+  display: grid;
+  gap: 2px; /* 格子之间的间距*/
+  background: #8ea4b8; /* 网格背景色 */
+  padding: 2px;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  user-select: none; /* 防止文字被误选中 */
+  touch-action: manipulation; 
+}
+
+/* 每个格子 */
+.cell {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 700;
+  border: 1px solid var(--grid-border);
+  background: var(--closed); 
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+/* 鼠标悬停时 */
+.cell:hover {
+  filter: brightness(0.97);
+}
+
+/* 已翻开的格子 */
+.cell.open {
+  background: var(--open); 
+  cursor: default;
+  border-color: #d6dce3;
+}
+
+/* 插旗状态 */
+.cell.flagged {
+  background: #dce8f4; 
+}
+
+/* 雷被翻开时 */
+.cell.mine {
+  background: #ffe4e4; 
+}
+
+/* 踩雷时高亮 */
+.cell.exploded {
+  background: #ffb3b3;
+}
+
+/* 数字颜色：扫雷经典配色 */
+.cell.num-1 { color: #1e88e5; } /* 蓝 */
+.cell.num-2 { color: #2e7d32; } /* 绿 */
+.cell.num-3 { color: #d32f2f; } /* 红 */
+.cell.num-4 { color: #0d47a1; } /* 深蓝 */
+.cell.num-5 { color: #8b0000; } /* 暗红 */
+.cell.num-6 { color: #008b8b; } /* 青 */
+.cell.num-7 { color: #000000; } /* 黑 */
+.cell.num-8 { color: #808080; } /* 灰 */
+
+
+.modal {
+  position: fixed; 
+  /* 让弹窗遮罩永固在浏览器窗上， */
+
+  inset: 0;
+
+
+  background: rgba(0, 0, 0, 0.45);
+  /* 半透明黑色背景：
+     rgba(0,0,0,0.45) 表示黑色，透明度45%。 */
+
+  display: flex;
+  /* 使用 flex弹窗内容水平垂直居中*/
+
+  align-items: center;
+
+
+  justify-content: center;
+  padding: 16px;
+  /* 内边距步太贴手机边 */
+
+  z-index: 99;
+  /* 层级数值越大越靠上 */
+}
+
+
+
+.modal.hidden {
+  display: none;
+  /* 完全隐藏 元素不会显示 */
+}
+
+
+/* 
+弹窗内容区域 modal-content 真正显示在中间的白色卡片里面放标题、文字、按钮等内容 */
+.modal-content {
+  width: min(92vw, 420px);
+  /* 宽度 取 92vw 和 420px 之间较小的 */
+  background: #fff;
+
+  padding: 24px;
+
+  text-align: center;
+  /* 文字居中 */
+
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.2);
+  /* 阴影 */
+
+  border-top: 8px solid var(--primary);
+  /* 顶部边框默认是主题主色 */
+}
+
+
+
+.modal-content.success {
+  border-top-color: var(--success);
+  /* 顶部边框变成成功色 */
+}
+
+
+.modal-content.success h2 {
+  color: var(--success);
+
+}
+
+
+/*
+  失败状态 fail
+  */
+.modal-content.fail {
+  border-top-color: var(--danger);
+}
+
+
+/* 失败状态下的标题也变成红色 */
+.modal-content.fail h2 {
+  color: var(--danger);
+  /* 标题文字变成危险色 */
+}
+
+
+.modal-content h2 {
+  margin: 0 0 10px;
+  /* 外边距：
+     上方 0，左右 0，下方 10px。
+     让标题和下面的内容拉开一点距离。 */
+
+  color: var(--primary-dark);
+  /* 默认标题颜色：
+     如果不是成功/失败状态，就显示深蓝色。 */
+}
+
+.modal-content p {
+  margin: 0 0 18px;
+  /* 上方 0左右 0下方 18px */
+
+  font-size: 16px;
+
+
+  line-height: 1.6;
+ 
+}
+
+
+/* 
+
+   当屏幕宽度小于等于 768px 时生效屏幕上适配
+ */
+@media (max-width: 768px) {
+
+  .header h1 {
+    font-size: 26px;
+    /* 缩小 */
+  }
+
+  /* 棋盘格子缩小 */
+  .cell {
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+  
+  }
+
+  select,
+  input,
+  .btn {
+    width: 100%;
+  }
+
+  
+  .control-group {
+    flex: 1 1 140px;
+    /* 
+      1方大 1缩小 基础宽度140px
+    */
+  }
+}
+
+
+/* 
+   当屏幕宽度小于等于 420px 时缩小
+ */
+@media (max-width: 420px) {
+  .cell {
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    /* 屏幕更小，格子再缩小一点，
+     */
+  }
+}
